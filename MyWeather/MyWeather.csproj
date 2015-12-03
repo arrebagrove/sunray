@@ -42,6 +42,8 @@
     <Compile Include="Controls\GestureBoxView.cs" />
     <Compile Include="Converters\CodeToLightImageStringConverter.cs" />
     <Compile Include="Converters\CodeToDarkImageStringConverter.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Converters\TempToThermoImageConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -73,5 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyWeather.API\MyWeather.API.csproj">
+      <Project>{7B5808F6-AF95-4970-9C6A-768A828AC5E8}</Project>
+      <Name>MyWeather.API</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

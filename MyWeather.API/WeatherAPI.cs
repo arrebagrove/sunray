@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MyWeather.API
 {		
@@ -65,7 +66,6 @@ namespace MyWeather.API
 		public Condition condition { get; set; }
 		public string description { get; set; }
 		public List<Forecast> forecast { get; set; }
-		public Guid guid { get; set; }
 	}
 
 	[JsonObject]

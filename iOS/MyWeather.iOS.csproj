@@ -203,5 +203,8 @@
     <BundleResource Include="Resources\wind-light.png" />
     <BundleResource Include="Resources\wind-light%402x.png" />
     <BundleResource Include="Resources\wind-light%403x.png" />
+    <BundleResource Include="Resources\moon-dark.png" />
+    <BundleResource Include="Resources\moon-dark%402x.png" />
+    <BundleResource Include="Resources\moon-dark%403x.png" />
   </ItemGroup>
 </Project>

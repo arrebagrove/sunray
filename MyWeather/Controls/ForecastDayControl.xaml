@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:common="clr-namespace:MyWeather;assembly=MyWeather" 
+	xmlns:local="clr-namespace:MyWeather;assembly=MyWeather" 
 	x:Class="MyWeather.ForecastDayControl"
-	BackgroundColor="{x:Static common:AppConstants.WhiteColor}">
+	BackgroundColor="{x:Static local:AppConstants.WhiteColor}">
 	<ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LabelStyle" TargetType="Label">
-                <Setter Property="Font" Value="{x:Static common:AppConstants.ApplicationFont}"/>
-                <Setter Property="TextColor" Value="{x:Static common:AppConstants.DarkGrayColor}"/>
+                <Setter Property="Font" Value="{x:Static local:AppConstants.ApplicationFont}"/>
+                <Setter Property="TextColor" Value="{x:Static local:AppConstants.DarkGrayColor}"/>
             </Style>
         </ResourceDictionary>
+
+        <local:CodeToDarkImageStringConverter x:Key="codeToDarkImageStringConverter" />
+
     </ContentPage.Resources>
 
 	<ContentView.Content>
@@ -24,7 +27,7 @@
 			<Label x:Name="dayLabel"
 				Text="Tomorrow"
 				Style="{StaticResource LabelStyle}"
-			    FontSize="{x:Static common:AppConstants.MediumFontSize}"/>
+			    FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
 
 			<Grid Grid.Row="1">
 				<Grid.ColumnDefinitions>
@@ -36,16 +39,15 @@
 		       			Orientation="Vertical"
 		       			HorizontalOptions="Center"
 		       			VerticalOptions="Center">
-		<!--		       			<Image x:Name="imageCondition"
-		       				HeightRequest="45"
-		       				WidthRequest="45"/>-->
+		       			<Image x:Name="imageCondition"
+		       				Source="{Binding code, Converter={StaticResource codeToDarkImageStringConverter}}"/>
 		       			<BoxView Grid.RowSpan="3"
-			       			BackgroundColor="{x:Static common:AppConstants.DarkGrayColor}"
+			       			BackgroundColor="{x:Static local:AppConstants.DarkGrayColor}"
 			       			VerticalOptions="Fill"/>
 			       		<Label x:Name="labelCondition"
 		       				Text="Light Snow"
 		       				Style="{StaticResource LabelStyle}"
-			       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+			       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
 			       			VerticalOptions="Start"/>
 		       		</StackLayout>
 
@@ -64,31 +66,47 @@
 						<Label
 							Text="High:"
 							Style="{StaticResource LabelStyle}"
-						    FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						    FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						    HorizontalOptions="End"/>
 
-						<Label Grid.Column="1"
-							x:Name="labelHighTemp"
-							Text="34°"
-							Style="{StaticResource LabelStyle}"
-						    FontSize="{x:Static common:AppConstants.SmallFontSize}"
-						    HorizontalOptions="Start"/>
+						<StackLayout Grid.Column="1" 
+							Orientation="Horizontal"
+							Spacing="0">
+							<Label 
+								x:Name="labelHighTemp"
+								Text="{Binding high}"
+								Style="{StaticResource LabelStyle}"
+							    FontSize="{x:Static local:AppConstants.SmallFontSize}"
+							    HorizontalOptions="Start"/>
+							<Label 
+								Text="°"
+								Style="{StaticResource LabelStyle}"
+							    FontSize="{x:Static local:AppConstants.SmallFontSize}"
+							    HorizontalOptions="Start"/>
+						</StackLayout>
 
 						<Label Grid.Row="1"
 							Text="Low:"
 							Style="{StaticResource LabelStyle}"
-						    FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						    FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						    HorizontalOptions="End"/>
 
-						<Label Grid.Row="1" Grid.Column="1"
-							x:Name="labelLowTemp"
-							Text="20°"
-							Style="{StaticResource LabelStyle}"
-						    FontSize="{x:Static common:AppConstants.SmallFontSize}"
-						    HorizontalOptions="Start"/>
-
-		       		</Grid>
-
+						 <StackLayout Grid.Row="1" Grid.Column="1" 
+							Orientation="Horizontal"
+							Spacing="0">
+							<Label 
+								x:Name="labelLowTemp"
+								Text="{Binding low}"
+								Style="{StaticResource LabelStyle}"
+							    FontSize="{x:Static local:AppConstants.SmallFontSize}"
+							    HorizontalOptions="Start"/>
+							<Label 
+								Text="°"
+								Style="{StaticResource LabelStyle}"
+							    FontSize="{x:Static local:AppConstants.SmallFontSize}"
+							    HorizontalOptions="Start"/>
+						</StackLayout>
+		       	</Grid>
 			</Grid>
 
 		</Grid>

@@ -8,10 +8,17 @@ namespace MyWeather
 {
 	public partial class MainPage : ContentPage
 	{
+		private MainViewModel viewModel;
+
 		public MainPage ()
 		{
 			InitializeComponent ();
+
+			viewModel = new MainViewModel ();
+			this.BindingContext = viewModel;
+
 			// Check temp label size
+			// Setup Forecast list
 
 			SubscribeBoxViewMain ();
 
@@ -28,8 +35,6 @@ namespace MyWeather
 			Debug.WriteLine ("Cities Grid" + gridCities.Bounds);
 			Debug.WriteLine ("Main Grid" + gridMainContent.Bounds);
 			Debug.WriteLine ("Settings Grid" + gridSettings.Bounds);
-			Debug.WriteLine ("Therm Size" + thermBox.Bounds);
-
 		}
 
 		#region Swipe Handlers
