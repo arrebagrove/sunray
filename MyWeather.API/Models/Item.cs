@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MyWeather.API
 {
+	[JsonObject]
 	public class Item
 	{
-		public Item ()
-		{
-		}
+		public Condition Condition { get; set; }
+		public List<Forecast> Forecast { get; set; }
 	}
 }
 

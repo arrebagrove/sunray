@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace MyWeather.API
 {
+	[JsonObject]
 	public class Wind
 	{
-		public Wind ()
-		{
-		}
+		public string Direction { get; set; }
+		public string Speed { get; set; }
 	}
 }
 
