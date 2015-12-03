@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace MyWeather.API
 {
+	[JsonObject ("channel")]
 	public class Channel
 	{
-		public Channel ()
-		{
-		}
+		public Location Location { get; set; }
+		public Units Units { get; set; }
+		public Wind Wind { get; set; }
+		public Atmosphere Atmosphere { get; set; }
+		public Item Item { get; set; }
 	}
 }
 
