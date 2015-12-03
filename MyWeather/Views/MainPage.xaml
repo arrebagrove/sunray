@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:common="clr-namespace:MyWeather;assembly=MyWeather" 
+	x:Class="MyWeather.MainPage"
+	BackgroundColor="#34495E">
+
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="Font" Value="{x:Static common:AppConstants.ApplicationFont}"/>
+                <Setter Property="TextColor" Value="{x:Static common:AppConstants.WhiteColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+	<ContentPage.Content>
+		<RelativeLayout x:Name="relativeLayoutMain">
+
+			<Grid x:Name="gridCities"
+				BackgroundColor="Fuchsia"
+				Padding="{x:Static common:AppConstants.TopItemPadding}"
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=0}"
+		        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=-1}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=1}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=1}">
+
+		        <Grid.RowDefinitions>
+		        	<RowDefinition Height="*"/>
+		        	<RowDefinition Height="Auto"/>
+		        </Grid.RowDefinitions>
+
+		        <ListView>
+			        <ListView.ItemTemplate>
+			        	<DataTemplate>
+			    			<TextCell Text="Boston, MA"/>
+			        	</DataTemplate>
+			        </ListView.ItemTemplate>
+		        </ListView>
+
+		        <Button Grid.Row="1" Text="+" FontSize="50" HorizontalOptions="End"/>
+
+				<common:GestureBoxView Grid.RowSpan="2" x:Name="boxViewCities" BackgroundColor="Fuchsia"/>
+					                 
+			</Grid>
+
+			<Grid x:Name="gridMainContent"
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=0}"
+		        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=1}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=1}">
+
+		        <Grid.RowDefinitions>
+		        	<RowDefinition Height="Auto"/>
+		        	<RowDefinition Height="*"/>
+		        	<RowDefinition Height="125"/>
+		        </Grid.RowDefinitions>
+
+		        	<!-- Location Label -->
+		        	<StackLayout Orientation="Vertical"
+		        		Spacing="0"
+			       		Padding="{x:Static common:AppConstants.TopItemPadding}">
+			        	<Label x:Name="labelLocation"
+				        	Text="Boston, MA" 
+				        	Style="{StaticResource LabelStyle}"
+				        	FontSize="{x:Static common:AppConstants.MediumFontSize}"
+				       		HorizontalOptions="StartAndExpand"/>
+				       	<Label x:Name="labelDate"
+		       				Text="Saturday, Nov 28"
+		       				Style="{StaticResource LabelStyle}"
+			       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+			       			HorizontalOptions="StartAndExpand"/>
+				    </StackLayout>
+				   
+			        <Grid Grid.Row="1"
+			        	VerticalOptions="Center">
+			       		<Grid.RowDefinitions>
+				        	<RowDefinition Height="*"/>
+			        		<RowDefinition Height="Auto"/>
+			        	</Grid.RowDefinitions>
+
+			        	<!-- Temp Label -->
+			        	<StackLayout Grid.Row="0"
+				       		Orientation="Horizontal"
+				       		HorizontalOptions="Center"
+				       		VerticalOptions="End"
+				       		Spacing="0"
+				       		Padding="0,0">
+			       			<Label x:Name="labelTemp"
+			       				Text="30"
+			       				Style="{StaticResource LabelStyle}"
+				       			FontSize="{x:Static common:AppConstants.ExtraLargeFontSize}"
+				       			VerticalOptions="Start"/>
+				       		<StackLayout Orientation="Horizontal"
+				       			Padding="0,15,0,0"
+				       			Spacing="0">
+				       			<Label x:Name="labelDegreeSymbol"
+				       				Text="°"
+				       				Style="{StaticResource LabelStyle}"
+					       			FontSize="{x:Static common:AppConstants.MediumFontSize}"
+					       			VerticalOptions="Start"/>
+					       		<Label x:Name="labelUnits"
+				       				Text="F"
+				       				Style="{StaticResource LabelStyle}"
+					       			FontSize="{x:Static common:AppConstants.MediumFontSize}"
+					       			VerticalOptions="Start"/>
+				       		</StackLayout>
+			       		</StackLayout>
+
+					     <!-- Conditions Grid -->
+					    <Grid Grid.Row="1"
+					       		Padding="25,0"
+					       		VerticalOptions="Fill">
+					       		<Grid.RowDefinitions>
+					       			<RowDefinition Height="*"/>
+					       			<RowDefinition Height="*"/>
+					       		</Grid.RowDefinitions>
+					       		<Grid.ColumnDefinitions>
+					       			<ColumnDefinition Width="*"/>
+					       			<ColumnDefinition Width="*"/>
+					       		</Grid.ColumnDefinitions>
+
+					       		<!-- Condition -->
+					       		<StackLayout
+					       			Orientation="Vertical"
+					       			HorizontalOptions="Center"
+					       			VerticalOptions="Center"
+					       			Padding="0,5">
+			<!--		       			<Image x:Name="imageCondition"
+					       				HeightRequest="45"
+					       				WidthRequest="45"/>-->
+					       			<BoxView Grid.RowSpan="3"
+						       			HeightRequest="45"
+						       			WidthRequest="45"
+						       			BackgroundColor="{x:Static common:AppConstants.WhiteColor}"
+						       			VerticalOptions="Start"
+						       			HorizontalOptions="Center"/>
+						       		<Label x:Name="labelCondition"
+					       				Text="Light Snow"
+					       				Style="{StaticResource LabelStyle}"
+						       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						       			VerticalOptions="Start"/>
+					       		</StackLayout>
+
+					       		<!-- High/Low -->
+					       		<Grid Grid.Column="1"
+					       			HorizontalOptions="Center"
+					       			VerticalOptions="Center"
+					       			Padding="0,5">
+									<Grid.RowDefinitions>
+						       			<RowDefinition Height="*"/>
+						       			<RowDefinition Height="2"/>
+						       			<RowDefinition Height="*"/>
+						       		</Grid.RowDefinitions>
+						       		<Grid.ColumnDefinitions>
+						       			<ColumnDefinition Width="*"/>
+						       			<ColumnDefinition Width="*"/>
+						       		</Grid.ColumnDefinitions>
+
+			<!--			       		<Image Grid.RowSpan="3"
+						       			x:Name="imageThermo"
+						       			HeightRequest="110"/>-->
+
+						       		<BoxView x:Name="thermBox" Grid.RowSpan="3"
+						       			HeightRequest="75"
+						       			WidthRequest="28"
+						       			BackgroundColor="{x:Static common:AppConstants.WhiteColor}"
+						       			VerticalOptions="Center"
+						       			HorizontalOptions="End"/>
+
+						       		<Label Grid.Column="1"
+						       			Text="34°"
+					       				Style="{StaticResource LabelStyle}"
+						       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						       			VerticalOptions="Center"
+						       			HorizontalOptions="Center"/>
+
+						       		<BoxView Grid.Row="1" Grid.Column="1"
+						       			HeightRequest="2"
+						       			WidthRequest="20"
+						       			BackgroundColor="{x:Static common:AppConstants.WhiteColor}"
+						       			VerticalOptions="Center"
+						       			HorizontalOptions="Center"/>
+						       		
+						       		<Label Grid.Row="2" Grid.Column="1"
+						       			Text="20°"
+					       				Style="{StaticResource LabelStyle}"
+						       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						       			VerticalOptions="Center"
+						       			HorizontalOptions="Center"/>
+
+					       		</Grid>
+
+					       		<!-- Chance Precip -->
+					       		<StackLayout Grid.Row="1"
+					       			Orientation="Vertical"
+					       			VerticalOptions="Center"
+					       			HorizontalOptions="Center"
+					       			Padding="0,5">
+			<!--		       			<Image x:Name="imageCondition"
+					       				HeightRequest="45"
+					       				WidthRequest="45"/>-->
+					       			<BoxView Grid.RowSpan="3"
+						       			HeightRequest="45"
+						       			WidthRequest="45"
+						       			BackgroundColor="{x:Static common:AppConstants.WhiteColor}"
+						       			VerticalOptions="Start"
+						       			HorizontalOptions="Center"/>
+						       		<Label x:Name="labelPrecipitation"
+					       				Text="99%"
+					       				Style="{StaticResource LabelStyle}"
+						       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						       			VerticalOptions="Start"
+						       			HorizontalOptions="Center"/>
+					       		</StackLayout>
+
+					       		<!-- Wind -->
+					       		<StackLayout Grid.Row="1" Grid.Column="1"
+					       			Orientation="Vertical"
+					       			VerticalOptions="Center"
+					       			HorizontalOptions="Center"
+					       			Padding="0,5">
+			<!--		       			<Image x:Name="imageCondition"
+					       				HeightRequest="45"
+					       				WidthRequest="45"/>-->
+					       			<BoxView Grid.RowSpan="3"
+						       			HeightRequest="45"
+						       			WidthRequest="45"
+						       			BackgroundColor="{x:Static common:AppConstants.WhiteColor}"
+						       			VerticalOptions="Start"
+						       			HorizontalOptions="Center"/>
+						       		<Label x:Name="labelWind"
+					       				Text="NE 25 mph"
+					       				Style="{StaticResource LabelStyle}"
+						       			FontSize="{x:Static common:AppConstants.SmallFontSize}"
+						       			VerticalOptions="Start"
+						       			HorizontalOptions="Center"/>
+					       		</StackLayout>
+					       	</Grid>
+			        </Grid>
+			       
+			       	
+
+			       	<!-- Forecast -->
+			       	<RelativeLayout x:Name="relativeLayoutForecast"
+			       		Grid.Row="2">
+
+			       	 	<!-- Tomorrow -->
+			       	 	<common:ForecastDayControl x:Name="forecastDayTomorrow"
+			       	 		RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+					                               			Property=Width,
+					                                		Factor=0}"
+					        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+					                               			Property=Height,
+					                                		Factor=0}"
+					        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+					                               			Property=Height,
+					                                		Factor=1}"
+					        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+					                               			Property=Width,
+					                                		Factor=1}"/>
+
+			       	 	<!-- These can be added programmatically -->
+
+		       		</RelativeLayout>
+
+		       	<common:GestureBoxView Grid.RowSpan="3" x:Name="boxViewMain" BackgroundColor="Transparent"/>
+
+			</Grid>
+
+
+
+			<Grid x:Name="gridSettings"
+				Padding="{x:Static common:AppConstants.TopItemPadding}"
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=0}"
+		        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=1}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=1}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=1}">
+
+		        <Grid.RowDefinitions>
+		        	<RowDefinition Height="50"/>
+		        	<RowDefinition Height="*"/>
+		        </Grid.RowDefinitions>
+
+		        <!-- Made this a TableView so more settings can be added later -->
+		        <TableView BackgroundColor="Transparent" IsEnabled="false" RowHeight="50">
+		        	<TableRoot>
+						<TableSection>
+			    			<ViewCell>
+			    				<ViewCell.View>
+			    					<StackLayout Orientation="Horizontal" Padding="10,5">
+			    						<Label Text="Imperial Units" 
+			    							Style="{StaticResource LabelStyle}"
+							       			FontSize="{x:Static common:AppConstants.MediumFontSize}"
+							       			VerticalOptions="Center"
+							       			HorizontalOptions="StartAndExpand"/>
+							       		<Switch 
+							       			IsToggled ="{Binding ImerialUnits}"
+									       	VerticalOptions="Center"
+							       			HorizontalOptions="End"/>
+			    					</StackLayout>
+			    				</ViewCell.View>
+			    			</ViewCell>
+						</TableSection>
+					</TableRoot>
+		        </TableView>
+
+		        <common:GestureBoxView Grid.RowSpan="2" x:Name="boxViewSettings" BackgroundColor="Transparent"/>
+
+			</Grid>
+		</RelativeLayout>	
+	</ContentPage.Content>
+</ContentPage>
