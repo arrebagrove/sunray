@@ -11,17 +11,17 @@
                 <Setter Property="Font" Value="{x:Static local:AppConstants.ApplicationFont}"/>
                 <Setter Property="TextColor" Value="{x:Static local:AppConstants.WhiteColor}"/>
             </Style>
-        </ResourceDictionary>
 
-        <local:CodeToLightImageStringConverter x:Key="codeToLightImageStringConverter" />
-        <local:TempToThermoImageConverter x:Key="tempToThermoImageConverter" />
+            <local:CodeToLightImageStringConverter x:Key="codeToLightImageStringConverter" />
+	        <local:TempToThermoImageConverter x:Key="tempToThermoImageConverter" />
+	        <local:InvertedBooleanConverter x:Key="invertedBooleanConverter" />
+        </ResourceDictionary>
     </ContentPage.Resources>
 
 	<ContentPage.Content>
 		<RelativeLayout x:Name="relativeLayoutMain">
 
 			<Grid x:Name="gridCities"
-				BackgroundColor="Fuchsia"
 				Padding="{x:Static local:AppConstants.TopItemPadding}"
 				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
 		                               			Property=Width,
@@ -51,11 +51,12 @@
 
 		        <Button Grid.Row="1" Text="+" FontSize="50" HorizontalOptions="End"/>
 
-				<local:GestureBoxView Grid.RowSpan="2" x:Name="boxViewCities" BackgroundColor="Fuchsia"/>
+				<local:GestureBoxView Grid.RowSpan="2" x:Name="boxViewCities" BackgroundColor="Transparent"/>
 					                 
 			</Grid>
 
 			<Grid x:Name="gridMainContent"
+				IsVisible="{Binding IsBusy, Converter={StaticResource invertedBooleanConverter}}"
 				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
 		                               			Property=Width,
 		                                		Factor=0}"
@@ -79,11 +80,19 @@
 		        	<StackLayout Orientation="Vertical"
 		        		Spacing="0"
 			       		Padding="{x:Static local:AppConstants.TopItemPadding}">
-			        	<Label x:Name="labelLocation"
-				        	Text="Boston, MA" 
-				        	Style="{StaticResource LabelStyle}"
-				        	FontSize="{x:Static local:AppConstants.MediumFontSize}"
-				       		HorizontalOptions="StartAndExpand"/>
+			       		<StackLayout Orientation="Horizontal" 
+			       			Spacing="0"
+			       			HorizontalOptions="StartAndExpand">
+			       			<Label x:Name="labelCity"
+					        	Text="{Binding Location.City, StringFormat='{0:N},  '}" 
+					        	Style="{StaticResource LabelStyle}"
+					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
+					        <Label x:Name="labelRegion"
+					        	Text="{Binding Location.Region}" 
+					        	Style="{StaticResource LabelStyle}"
+					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
+			       		</StackLayout>
+			        	
 				       	<Label x:Name="labelDate"
 		       				Text="Saturday, Nov 28"
 		       				Style="{StaticResource LabelStyle}"
@@ -106,7 +115,7 @@
 				       		Spacing="0"
 				       		Padding="0,0">
 			       			<Label x:Name="labelTemp"
-			       				Text="30"
+			       				Text="{Binding Item.Condition.Temp}"
 			       				Style="{StaticResource LabelStyle}"
 				       			FontSize="{x:Static local:AppConstants.ExtraLargeFontSize}"
 				       			VerticalOptions="Start"/>
@@ -119,7 +128,7 @@
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
 					       			VerticalOptions="Start"/>
 					       		<Label x:Name="labelUnits"
-				       				Text="F"
+				       				Text="{Binding Units.Temperature}"
 				       				Style="{StaticResource LabelStyle}"
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
 					       			VerticalOptions="Start"/>
@@ -146,7 +155,7 @@
 					       			VerticalOptions="Center"
 					       			Padding="0,5">
 		       						<Image x:Name="imageCondition"
-					       				Source="{Binding Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
+					       				Source="{Binding Item.Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
 <!--					       			<BoxView Grid.RowSpan="3"
 						       			HeightRequest="45"
 						       			WidthRequest="45"
@@ -154,7 +163,7 @@
 						       			VerticalOptions="Start"
 						       			HorizontalOptions="Center"/>-->
 						       		<Label x:Name="labelCondition"
-					       				Text="Light Snow"
+					       				Text="{Binding Item.Condition.Text}"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						       			VerticalOptions="Start"/>
@@ -177,17 +186,10 @@
 
 			       					<Image Grid.RowSpan="3"
 						       			x:Name="imageThermo"
-						       			Source="{Binding Condition.Temp, Converter={StaticResource tempToThermoImageConverter}}"/>
-
-<!--						       		<BoxView x:Name="thermBox" Grid.RowSpan="3"
-						       			HeightRequest="75"
-						       			WidthRequest="28"
-						       			BackgroundColor="{x:Static local:AppConstants.WhiteColor}"
-						       			VerticalOptions="Center"
-						       			HorizontalOptions="End"/>-->
+						       			Source="{Binding Item.Condition.Temp, Converter={StaticResource tempToThermoImageConverter}}"/>
 
 						       		<Label Grid.Column="1"
-						       			Text="34°"
+						       			x:Name="labelHighTemp"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						       			VerticalOptions="Center"
@@ -201,7 +203,7 @@
 						       			HorizontalOptions="Center"/>
 						       		
 						       		<Label Grid.Row="2" Grid.Column="1"
-						       			Text="20°"
+						       			x:Name="labelLowTemp"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						       			VerticalOptions="Center"
@@ -237,7 +239,7 @@
 					       			VerticalOptions="Center"
 					       			HorizontalOptions="Center"
 					       			Padding="0,5">
-					       			<Image x:Name="imageCondition"
+					       			<Image x:Name="imageWind"
 					       				Source="wind-light.png"/>
 <!--					       			<BoxView Grid.RowSpan="3"
 						       			HeightRequest="45"
@@ -261,26 +263,15 @@
 			       	<RelativeLayout x:Name="relativeLayoutForecast"
 			       		Grid.Row="2">
 
-			       	 	<!-- Tomorrow -->
-			       	 	<local:ForecastDayControl x:Name="forecastDayTomorrow"
-			       	 		RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
-					                               			Property=Width,
-					                                		Factor=0}"
-					        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
-					                               			Property=Height,
-					                                		Factor=0}"
-					        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
-					                               			Property=Height,
-					                                		Factor=1}"
-					        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
-					                               			Property=Width,
-					                                		Factor=1}"/>
+		       			
 
-			       	 	<!-- These can be added programmatically -->
+			       	 	<!-- The ForecastControls are added programmatically -->
 
 		       		</RelativeLayout>
 
-		       	<local:GestureBoxView Grid.RowSpan="3" x:Name="boxViewMain" BackgroundColor="Transparent"/>
+			       	<local:GestureBoxView Grid.Row="2" x:Name="boxViewForecast" BackgroundColor="Transparent"/>
+
+			       	<local:GestureBoxView Grid.RowSpan="2" x:Name="boxViewMain" BackgroundColor="Transparent"/>
 
 			</Grid>
 
@@ -332,6 +323,15 @@
 		        <local:GestureBoxView Grid.RowSpan="2" x:Name="boxViewSettings" BackgroundColor="Transparent"/>
 
 			</Grid>
+
+			<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+				RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Width,
+		                                		Factor=0.5}"
+		        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+		                               			Property=Height,
+		                                		Factor=0.5}"/>
+
 		</RelativeLayout>	
 	</ContentPage.Content>
 </ContentPage>

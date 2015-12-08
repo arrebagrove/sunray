@@ -10,17 +10,24 @@ namespace MyWeather
 		#region IValueConverter implementation
 		public object Convert (object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{
-			if (value.GetType () != typeof(int))
+			if (value.GetType () != typeof(string))
 			{
-				throw new Exception ("Value is not an int");
+				throw new Exception ("Value is not a string");
+			}
+			var stringValue = (string) value;
+
+			int temp;
+			bool result = Int32.TryParse(stringValue, out temp);
+			if (!result)
+			{
+				throw new Exception ("String could not be parsed to int");
 			}
 
-			var code = (int)value;
-			if (code < 40)
+			if (temp < 40)
 			{
 				return "thermo-cold.png";
 			}
-			else if (code > 40 && code < 80)
+			else if (temp > 40 && temp < 80)
 			{
 				return "thermo-mild.png";
 			}

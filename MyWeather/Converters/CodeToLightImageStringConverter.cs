@@ -9,12 +9,18 @@ namespace MyWeather
 
 		public object Convert (object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{
-			if (value.GetType () != typeof(int))
+			if (value.GetType () != typeof(string))
 			{
-				throw new Exception ("Value is not an int");
+				throw new Exception ("Value is not a string");
 			}
+			var stringValue = (string) value;
 
-			var code = (int)value;
+			int code;
+			bool result = Int32.TryParse(stringValue, out code);
+			if (!result)
+			{
+				throw new Exception ("String could not be parsed to int");
+			}
 
 			if (code == 0 || code == 1 || code == 2 ||
 				code == 3 || code == 17)

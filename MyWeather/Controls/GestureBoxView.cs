@@ -7,6 +7,8 @@ namespace MyWeather
 	{
 		public event EventHandler SwipedUp;
 		public event EventHandler SwipedDown;
+		public event EventHandler SwipedLeft;
+		public event EventHandler SwipedRight;
 
 		public void RaiseSwipedUp()
 		{
@@ -21,6 +23,22 @@ namespace MyWeather
 			if (SwipedDown != null)
 			{
 				SwipedDown (this, EventArgs.Empty);
+			}
+		}
+
+		public void RaiseSwipedLeft()
+		{
+			if (SwipedLeft != null)
+			{
+				SwipedLeft (this, EventArgs.Empty);
+			}
+		}
+
+		public void RaiseSwipedRight()
+		{
+			if (SwipedRight != null)
+			{
+				SwipedRight (this, EventArgs.Empty);
 			}
 		}
 	}
