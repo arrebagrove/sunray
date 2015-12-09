@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<application android:label="Sunray"></application>
+	<application android:label="Sunray" android:icon="@drawable/ic_launcher_app"></application>
 </manifest>

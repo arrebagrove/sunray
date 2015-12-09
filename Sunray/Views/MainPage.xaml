@@ -89,11 +89,11 @@
 			       			Spacing="0"
 			       			HorizontalOptions="StartAndExpand">
 			       			<Label
-					        	Text="{Binding Location.City, StringFormat='{0:N},  '}" 
+					        	Text="{Binding Channel.Location.City, StringFormat='{0:N},  '}" 
 					        	Style="{StaticResource LabelStyle}"
 					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
 					        <Label
-					        	Text="{Binding Location.Region}" 
+					        	Text="{Binding Channel.Location.Region}" 
 					        	Style="{StaticResource LabelStyle}"
 					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
 			       		</StackLayout>
@@ -120,7 +120,7 @@
 				       		Spacing="0"
 				       		Padding="0,0">
 			       			<Label
-			       				Text="{Binding Item.Condition.Temp}"
+			       				Text="{Binding Channel.Item.Condition.Temp}"
 			       				Style="{StaticResource LabelStyle}"
 				       			FontSize="{x:Static local:AppConstants.ExtraLargeFontSize}"
 				       			VerticalOptions="Start"/>
@@ -133,7 +133,7 @@
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
 					       			VerticalOptions="Start"/>
 					       		<Label
-				       				Text="{Binding Units.Temperature}"
+				       				Text="{Binding Channel.Units.Temperature}"
 				       				Style="{StaticResource LabelStyle}"
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
 					       			VerticalOptions="Start"/>
@@ -159,9 +159,9 @@
 					       			HorizontalOptions="Center"
 					       			VerticalOptions="Center"
 					       			Padding="0,5">
-		       						<Image  Source="{Binding Item.Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
+		       						<Image  Source="{Binding Channel.Item.Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
 						       		<Label
-					       				Text="{Binding Item.Condition.Text}"
+					       				Text="{Binding Channel.Item.Condition.Text}"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
 						       			VerticalOptions="Start"/>
@@ -183,7 +183,7 @@
 						       		</Grid.ColumnDefinitions>
 
 			       					<Image Grid.RowSpan="3"
-						       			Source="{Binding Item.Condition.Temp, Converter={StaticResource tempToThermoImageConverter}}"/>
+						       			Source="{Binding Channel.Item.Condition.Temp, Converter={StaticResource tempToThermoImageConverter}}"/>
 
 						       		<Label Grid.Column="1"
 						       			x:Name="labelHighTemp"

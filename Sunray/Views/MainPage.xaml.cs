@@ -20,7 +20,7 @@ namespace Sunray
 			InitializeComponent ();
 
 			viewModel = new MainViewModel ();
-			this.BindingContext = viewModel.Channel;
+			this.BindingContext = viewModel;
 
 			// Check temp label size
 

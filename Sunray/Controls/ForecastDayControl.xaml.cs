@@ -11,8 +11,6 @@ namespace Sunray
 		{
 			InitializeComponent ();
 			this.BindingContext = forecast;
-
-
 		}
 	}
 }

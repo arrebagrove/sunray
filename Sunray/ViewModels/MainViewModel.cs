@@ -12,12 +12,6 @@ namespace Sunray
 {
 	public class MainViewModel : INotifyPropertyChanged
 	{
-		#region Fields
-
-
-
-		#endregion
-
 
 		#region Properties
 
@@ -68,7 +62,7 @@ namespace Sunray
 			GetMockWeather ();
 		}
 
-		public async Task GetLocation()
+		public async Task GetLocaton()
 		{
 			if (isBusy)
 			{
@@ -85,11 +79,11 @@ namespace Sunray
 				{
 					locator.DesiredAccuracy = 50;
 					var position = await locator.GetPositionAsync (10000, null, false);
-					//GetWeatherFromLocation();
+					GetPlaceForLocation(position.Longitude, position.Latitude);
 				}
 				else
 				{
-					//GetWeatherFromCity();
+					// TODO: Alert user that location is unavailable
 				}
 			}
 			catch (Exception ex)
@@ -103,11 +97,18 @@ namespace Sunray
 			}
 		}
 
-		public void AddCity(string cityName)
+		public void GetPlaceForCity(string cityName)
 		{
-			
+			// TODO: Get Place from yahoo - https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-places
 		}
 
+		public void GetPlaceForLocation(double longitude, double latitude)
+		{
+			// TODO: Get Place from yahoo - https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-places
+		}
+			
+		// TODO: Change to get actual weather from yahoo
+		// Use SelectedPlace.WoeId
 		private void GetMockWeather()
 		{
 			var channel = new Channel ();
