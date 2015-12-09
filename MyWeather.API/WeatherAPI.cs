@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace MyWeather.API
+namespace Sunray.API
 {
 	public class WeatherAPI
 	{

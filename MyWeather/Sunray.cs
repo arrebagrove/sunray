@@ -1,8 +1,7 @@
 ﻿using System;
-
 using Xamarin.Forms;
 
-namespace MyWeather
+namespace Sunray
 {
 	public class App : Application
 	{

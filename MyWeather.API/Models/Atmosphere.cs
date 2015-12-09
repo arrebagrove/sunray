@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace MyWeather.API
+namespace Sunray.API
 {
 	[JsonObject]
 	public class Atmosphere

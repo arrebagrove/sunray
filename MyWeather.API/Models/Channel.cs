@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MyWeather.API
+namespace Sunray.API
 {
 	[JsonObject ("channel")]
 	public class Channel

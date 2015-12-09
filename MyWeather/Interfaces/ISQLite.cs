@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace MyWeather
+namespace Sunray
 {
 	public interface ISQLite
 	{

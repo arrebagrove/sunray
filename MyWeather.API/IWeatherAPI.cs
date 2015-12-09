@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MyWeather.API
+namespace Sunray.API
 {
 	public interface IWeatherAPI
 	{

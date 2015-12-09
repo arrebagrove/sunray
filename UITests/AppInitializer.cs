@@ -4,7 +4,7 @@ using System.Linq;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace MyWeather.UITests
+namespace Sunray.UITests
 {
 	public class AppInitializer
 	{

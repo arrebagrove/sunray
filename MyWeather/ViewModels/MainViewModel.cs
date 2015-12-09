@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using MyWeather.API;
+using Sunray.API;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using Plugin.Geolocator;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 
-namespace MyWeather
+namespace Sunray
 {
 	public class MainViewModel : INotifyPropertyChanged
 	{

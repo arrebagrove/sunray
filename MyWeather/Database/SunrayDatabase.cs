@@ -4,10 +4,10 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-using MyWeather.API;
+using Sunray.API;
 using System.Threading.Tasks;
 
-namespace MyWeather
+namespace Sunray
 {
 	// TODO: Async
 	public class SunrayDatabase

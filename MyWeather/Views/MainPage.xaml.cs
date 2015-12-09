@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Diagnostics;
 
-namespace MyWeather
+namespace Sunray
 {
 	public partial class MainPage : ContentPage
 	{

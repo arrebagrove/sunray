@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyWeather.API
+namespace Sunray.API
 {
 	public class Place
 	{

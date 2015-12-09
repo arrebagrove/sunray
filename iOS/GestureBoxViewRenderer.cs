@@ -2,12 +2,12 @@
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using Xamarin.Forms;
-using MyWeather;
-using MyWeather.iOS;
+using Sunray;
+using Sunray.iOS;
 
 [assembly: ExportRenderer (typeof(GestureBoxView), typeof(GestureBoxViewRenderer))]
 
-namespace MyWeather.iOS
+namespace Sunray.iOS
 {
 	public class GestureBoxViewRenderer : BoxRenderer
 	{

@@ -1,13 +1,13 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.IO;
-using MyWeather;
-using MyWeather.Droid;
+using Sunray;
+using Sunray.Droid;
 using SQLite;
 
 [assembly: Dependency (typeof (SQLite_Android))]
 
-namespace MyWeather.Droid
+namespace Sunray.Droid
 {
 	public class SQLite_Android : ISQLite
 	{

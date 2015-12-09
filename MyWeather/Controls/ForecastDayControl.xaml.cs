@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using MyWeather.API;
+using Sunray.API;
 
-namespace MyWeather
+namespace Sunray
 {
 	public partial class ForecastDayControl : ContentView
 	{

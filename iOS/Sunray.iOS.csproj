@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{26A1D5F0-5CA8-4C99-B53E-0FB73ABA8E70}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MyWeather.iOS</RootNamespace>
+    <RootNamespace>Sunray.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MyWeather.iOS</AssemblyName>
     <XamarinInsightsApiKey>fa15d397768ce4d8328d561b4ca8e64a7a7d30ff</XamarinInsightsApiKey>
@@ -114,9 +114,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyWeather\MyWeather.csproj">
+    <ProjectReference Include="..\MyWeather\Sunray.csproj">
       <Project>{A51B14B4-EB2A-4592-BC6A-3D3200BC1113}</Project>
-      <Name>MyWeather</Name>
+      <Name>Sunray</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
