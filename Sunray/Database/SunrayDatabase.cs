@@ -27,7 +27,7 @@ namespace Sunray
 		{
 			lock (locker) {
 				var places = new List<Place> ();
-				var query = database.Table<Place>().ToListAsync().ContinueWith (t => {
+				database.Table<Place>().ToListAsync().ContinueWith (t => {
 					foreach (var place in t.Result)
 					{
 						places.Add(place);

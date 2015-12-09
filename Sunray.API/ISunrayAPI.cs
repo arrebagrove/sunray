@@ -2,7 +2,7 @@
 
 namespace Sunray.API
 {
-	public interface IWeatherAPI
+	public interface ISunrayAPI
 	{
 		
 	}

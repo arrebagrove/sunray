@@ -8,7 +8,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Sunray.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MyWeather.iOS</AssemblyName>
     <XamarinInsightsApiKey>fa15d397768ce4d8328d561b4ca8e64a7a7d30ff</XamarinInsightsApiKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
@@ -28,6 +27,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchProfiling>true</MtouchProfiling>
+    <AssemblyName>Sunray.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -42,6 +42,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <AssemblyName>MyWeather.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -55,6 +56,7 @@
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
+    <AssemblyName>Sunray.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,6 +78,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
+    <AssemblyName>MyWeather.iOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -112,12 +115,6 @@
     <Reference Include="SQLite-net">
       <HintPath>..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyWeather\Sunray.csproj">
-      <Project>{A51B14B4-EB2A-4592-BC6A-3D3200BC1113}</Project>
-      <Name>Sunray</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -238,5 +235,11 @@
     <BundleResource Include="Resources\wind_light%402x.png" />
     <BundleResource Include="Resources\wind_light%403x.png" />
     <BundleResource Include="Resources\SunraySQLite.db3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sunray\Sunray.csproj">
+      <Project>{A51B14B4-EB2A-4592-BC6A-3D3200BC1113}</Project>
+      <Name>Sunray</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

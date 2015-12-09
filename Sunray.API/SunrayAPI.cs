@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sunray.API
 {
-	public class WeatherAPI
+	public class SunrayAPI
 	{
 
 	}

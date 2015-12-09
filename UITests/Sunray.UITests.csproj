@@ -6,7 +6,7 @@
     <ProjectGuid>{FB504536-B25F-43C9-98EA-BA87AE6F1216}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MyWeather.UITests</RootNamespace>
-    <AssemblyName>MyWeather.UITests</AssemblyName>
+    <AssemblyName>Sunray.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

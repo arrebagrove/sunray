@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray", "MyWeather\Sunray.csproj", "{A51B14B4-EB2A-4592-BC6A-3D3200BC1113}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray", "Sunray\Sunray.csproj", "{A51B14B4-EB2A-4592-BC6A-3D3200BC1113}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray.iOS", "iOS\Sunray.iOS.csproj", "{26A1D5F0-5CA8-4C99-B53E-0FB73ABA8E70}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray.Droid", "Droid\Sunra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray.UITests", "UITests\Sunray.UITests.csproj", "{FB504536-B25F-43C9-98EA-BA87AE6F1216}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray.API", "MyWeather.API\Sunray.API.csproj", "{7B5808F6-AF95-4970-9C6A-768A828AC5E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunray.API", "Sunray.API\Sunray.API.csproj", "{7B5808F6-AF95-4970-9C6A-768A828AC5E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@
     <ProjectGuid>{7B5808F6-AF95-4970-9C6A-768A828AC5E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Sunray.API</RootNamespace>
-    <AssemblyName>MyWeather.API</AssemblyName>
+    <AssemblyName>Sunray.API</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -39,11 +39,14 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Channel.cs" />
-    <Compile Include="WeatherAPI.cs" />
-    <Compile Include="IWeatherAPI.cs" />
     <Compile Include="Models\Place.cs" />
+    <Compile Include="ISunrayAPI.cs" />
+    <Compile Include="SunrayAPI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
@@ -51,8 +54,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
