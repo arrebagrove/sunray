@@ -41,6 +41,7 @@
     <Compile Include="Models\Channel.cs" />
     <Compile Include="WeatherAPI.cs" />
     <Compile Include="IWeatherAPI.cs" />
+    <Compile Include="Models\Place.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

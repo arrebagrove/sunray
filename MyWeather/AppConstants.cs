@@ -7,6 +7,8 @@ namespace MyWeather
 	{
 		// Padding
 		public static readonly Thickness TopItemPadding =
+			new Thickness(0, Device.OnPlatform(30, 10, 10), 0, 0);
+		public static readonly Thickness TopLabelsPadding = 
 			new Thickness(10, Device.OnPlatform(30, 10, 10), 10, 0);
 
 		// Fonts

@@ -11,6 +11,8 @@ namespace MyWeather
 		{
 			InitializeComponent ();
 			this.BindingContext = forecast;
+
+
 		}
 	}
 }

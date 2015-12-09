@@ -3,6 +3,10 @@ using System.ComponentModel;
 using MyWeather.API;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using Plugin.Geolocator;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace MyWeather
 {
@@ -37,14 +41,74 @@ namespace MyWeather
 			}
 		}
 
+		private string selectedPlace;
+		public string SelectedPlace
+		{
+			get { return selectedPlace; }
+			set {
+				selectedPlace = value;
+				OnPropertyChanged ();
+			}
+		}
+
+		private ObservableCollection<Place> places;
+		public ObservableCollection<Place> Places
+		{
+			get { return places; }
+			set {
+				places = value;
+				OnPropertyChanged ();
+			}
+		}
+
 		#endregion
 
 		public MainViewModel ()
 		{
-			GetFakeWeather ();
+			GetMockWeather ();
 		}
 
-		private async void GetFakeWeather()
+		public async Task GetLocation()
+		{
+			if (isBusy)
+			{
+				return;
+			}
+
+			try 
+			{
+				IsBusy = true;
+
+				var locator = CrossGeolocator.Current;
+
+				if (locator.IsGeolocationEnabled && locator.IsGeolocationAvailable)
+				{
+					locator.DesiredAccuracy = 50;
+					var position = await locator.GetPositionAsync (10000, null, false);
+					//GetWeatherFromLocation();
+				}
+				else
+				{
+					//GetWeatherFromCity();
+				}
+			}
+			catch (Exception ex)
+			{
+				// TODO: alert user
+				Debug.WriteLine(ex.Message);
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+		}
+
+		public void AddCity(string cityName)
+		{
+			
+		}
+
+		private void GetMockWeather()
 		{
 			var channel = new Channel ();
 

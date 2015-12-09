@@ -25,13 +25,13 @@ namespace MyWeather
 
 			if (temp < 40)
 			{
-				return "thermo-cold.png";
+				return "thermo_cold.png";
 			}
 			else if (temp > 40 && temp < 80)
 			{
-				return "thermo-mild.png";
+				return "thermo_mild.png";
 			}
-			return "thermo-hot.png";	
+			return "thermo_hot.png";	
 		}
 
 		public object ConvertBack (object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

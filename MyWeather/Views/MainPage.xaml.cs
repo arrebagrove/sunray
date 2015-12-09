@@ -137,9 +137,9 @@ namespace MyWeather
 			var pageHeight = gridMainContent.Height;
 
 			var citiesRect = new Rectangle (0, 0, gridCities.Width, gridCities.Height);
-			gridCities.LayoutTo (citiesRect, 300, Easing.SinIn);
+			gridCities.LayoutTo (citiesRect, 300, Easing.CubicInOut);
 			var mainRect = new Rectangle (0, gridMainContent.Height, gridMainContent.Width, gridMainContent.Height);
-			gridMainContent.LayoutTo (mainRect, 300, Easing.SinIn);
+			gridMainContent.LayoutTo (mainRect, 300, Easing.CubicInOut);
 
 			SubscribeBoxViewCities ();
 		}
@@ -149,9 +149,9 @@ namespace MyWeather
 			var pageHeight = gridMainContent.Height;
 
 			var citiesRect = new Rectangle (0, -gridCities.Height, gridCities.Width, gridCities.Height);
-			gridCities.LayoutTo (citiesRect, 300, Easing.SinIn);
+			gridCities.LayoutTo (citiesRect, 300, Easing.CubicInOut);
 			var mainRect = new Rectangle (0, 0, gridMainContent.Width, gridMainContent.Height);
-			gridMainContent.LayoutTo (mainRect, 300, Easing.SinIn);
+			gridMainContent.LayoutTo (mainRect, 300, Easing.CubicInOut);
 
 			SubscribeBoxViewMain ();
 		}
@@ -161,9 +161,9 @@ namespace MyWeather
 			var pageHeight = gridMainContent.Height;
 
 			var settingsRect = new Rectangle (0, gridSettings.Height, gridSettings.Width, gridSettings.Height);
-			gridSettings.LayoutTo (settingsRect, 300, Easing.SinIn);
+			gridSettings.LayoutTo (settingsRect, 300, Easing.CubicInOut);
 			var mainRect = new Rectangle (0, 0, gridMainContent.Width, gridMainContent.Height);
-			gridMainContent.LayoutTo (mainRect, 300, Easing.SinIn);
+			gridMainContent.LayoutTo (mainRect, 300, Easing.CubicInOut);
 
 			SubscribeBoxViewMain ();
 		}
@@ -173,9 +173,9 @@ namespace MyWeather
 			var pageHeight = gridMainContent.Height;
 
 			var settingsRect = new Rectangle (0, 0, gridSettings.Width, gridSettings.Height);
-			gridSettings.LayoutTo (settingsRect, 300, Easing.SinIn);
+			gridSettings.LayoutTo (settingsRect, 300, Easing.CubicInOut);
 			var mainRect = new Rectangle (0, -gridMainContent.Height, gridMainContent.Width, gridMainContent.Height);
-			gridMainContent.LayoutTo (mainRect, 300, Easing.SinIn);
+			gridMainContent.LayoutTo (mainRect, 300, Easing.CubicInOut);
 
 			SubscribeBoxViewSettings ();
 		}

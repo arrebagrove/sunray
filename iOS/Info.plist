@@ -42,5 +42,7 @@
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sunray would like to use your location to get weather in your hood.</string>
 </dict>
 </plist>

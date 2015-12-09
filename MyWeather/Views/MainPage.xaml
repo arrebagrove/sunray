@@ -19,7 +19,7 @@
     </ContentPage.Resources>
 
 	<ContentPage.Content>
-		<RelativeLayout x:Name="relativeLayoutMain">
+		<RelativeLayout>
 
 			<Grid x:Name="gridCities"
 				Padding="{x:Static local:AppConstants.TopItemPadding}"
@@ -49,7 +49,12 @@
 			        </ListView.ItemTemplate>
 		        </ListView>
 
-		        <Button Grid.Row="1" Text="+" FontSize="50" HorizontalOptions="End"/>
+		        <Button Grid.Row="1" 
+		        	x:Name="buttonAdd"
+		        	Image="plus_button.png" 
+		        	HorizontalOptions="End"
+		        	HeightRequest="75"
+		        	WidthRequest="75"/>
 
 				<local:GestureBoxView Grid.RowSpan="2" x:Name="boxViewCities" BackgroundColor="Transparent"/>
 					                 
@@ -73,27 +78,27 @@
 		        <Grid.RowDefinitions>
 		        	<RowDefinition Height="Auto"/>
 		        	<RowDefinition Height="*"/>
-		        	<RowDefinition Height="125"/>
+		        	<RowDefinition Height="135"/>
 		        </Grid.RowDefinitions>
 
 		        	<!-- Location Label -->
 		        	<StackLayout Orientation="Vertical"
 		        		Spacing="0"
-			       		Padding="{x:Static local:AppConstants.TopItemPadding}">
+			       		Padding="{x:Static local:AppConstants.TopLabelsPadding}">
 			       		<StackLayout Orientation="Horizontal" 
 			       			Spacing="0"
 			       			HorizontalOptions="StartAndExpand">
-			       			<Label x:Name="labelCity"
+			       			<Label
 					        	Text="{Binding Location.City, StringFormat='{0:N},  '}" 
 					        	Style="{StaticResource LabelStyle}"
 					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
-					        <Label x:Name="labelRegion"
+					        <Label
 					        	Text="{Binding Location.Region}" 
 					        	Style="{StaticResource LabelStyle}"
 					        	FontSize="{x:Static local:AppConstants.MediumFontSize}"/>
 			       		</StackLayout>
 			        	
-				       	<Label x:Name="labelDate"
+				       	<Label
 		       				Text="Saturday, Nov 28"
 		       				Style="{StaticResource LabelStyle}"
 			       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
@@ -111,10 +116,10 @@
 			        	<StackLayout Grid.Row="0"
 				       		Orientation="Horizontal"
 				       		HorizontalOptions="Center"
-				       		VerticalOptions="End"
+				       		VerticalOptions="Center"
 				       		Spacing="0"
 				       		Padding="0,0">
-			       			<Label x:Name="labelTemp"
+			       			<Label
 			       				Text="{Binding Item.Condition.Temp}"
 			       				Style="{StaticResource LabelStyle}"
 				       			FontSize="{x:Static local:AppConstants.ExtraLargeFontSize}"
@@ -122,12 +127,12 @@
 				       		<StackLayout Orientation="Horizontal"
 				       			Padding="0,20,0,0"
 				       			Spacing="0">
-				       			<Label x:Name="labelDegreeSymbol"
+				       			<Label
 				       				Text="°"
 				       				Style="{StaticResource LabelStyle}"
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
 					       			VerticalOptions="Start"/>
-					       		<Label x:Name="labelUnits"
+					       		<Label
 				       				Text="{Binding Units.Temperature}"
 				       				Style="{StaticResource LabelStyle}"
 					       			FontSize="{x:Static local:AppConstants.MediumFontSize}"
@@ -154,15 +159,8 @@
 					       			HorizontalOptions="Center"
 					       			VerticalOptions="Center"
 					       			Padding="0,5">
-		       						<Image x:Name="imageCondition"
-					       				Source="{Binding Item.Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
-<!--					       			<BoxView Grid.RowSpan="3"
-						       			HeightRequest="45"
-						       			WidthRequest="45"
-						       			BackgroundColor="{x:Static local:AppConstants.WhiteColor}"
-						       			VerticalOptions="Start"
-						       			HorizontalOptions="Center"/>-->
-						       		<Label x:Name="labelCondition"
+		       						<Image  Source="{Binding Item.Condition.Code, Converter={StaticResource codeToLightImageStringConverter}}"/>
+						       		<Label
 					       				Text="{Binding Item.Condition.Text}"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
@@ -185,7 +183,6 @@
 						       		</Grid.ColumnDefinitions>
 
 			       					<Image Grid.RowSpan="3"
-						       			x:Name="imageThermo"
 						       			Source="{Binding Item.Condition.Temp, Converter={StaticResource tempToThermoImageConverter}}"/>
 
 						       		<Label Grid.Column="1"
@@ -217,15 +214,8 @@
 					       			VerticalOptions="Center"
 					       			HorizontalOptions="Center"
 					       			Padding="0,5">
-					       			<Image x:Name="imageHumidity"
-					       				Source="humidity-light.png"/>
-<!--					       			<BoxView Grid.RowSpan="3"
-						       			HeightRequest="45"
-						       			WidthRequest="45"
-						       			BackgroundColor="{x:Static local:AppConstants.WhiteColor}"
-						       			VerticalOptions="Start"
-						       			HorizontalOptions="Center"/>-->
-						       		<Label x:Name="labelPrecipitation"
+					       			<Image Source="humidity_light.png"/>
+						       		<Label
 					       				Text="99%"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
@@ -239,15 +229,8 @@
 					       			VerticalOptions="Center"
 					       			HorizontalOptions="Center"
 					       			Padding="0,5">
-					       			<Image x:Name="imageWind"
-					       				Source="wind-light.png"/>
-<!--					       			<BoxView Grid.RowSpan="3"
-						       			HeightRequest="45"
-						       			WidthRequest="45"
-						       			BackgroundColor="{x:Static local:AppConstants.WhiteColor}"
-						       			VerticalOptions="Start"
-						       			HorizontalOptions="Center"/>-->
-						       		<Label x:Name="labelWind"
+					       			<Image Source="wind_light.png"/>
+						       		<Label
 					       				Text="NE 25 mph"
 					       				Style="{StaticResource LabelStyle}"
 						       			FontSize="{x:Static local:AppConstants.SmallFontSize}"
@@ -261,7 +244,8 @@
 
 			       	<!-- Forecast -->
 			       	<RelativeLayout x:Name="relativeLayoutForecast"
-			       		Grid.Row="2">
+			       		Grid.Row="2"
+			       		BackgroundColor="Transparent">
 
 		       			
 
